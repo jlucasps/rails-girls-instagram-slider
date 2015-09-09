@@ -1,5 +1,8 @@
 # Rails Girls Instagram Slider
 
+[![Build Status](https://snap-ci.com/jlucasps/rails-girls-instagram-slider/branch/master/build_image)](https://snap-ci.com/jlucasps/rails-girls-instagram-slider/branch/master)
+
+
 #### Build docker image
 ````
 $ docker-compose build
