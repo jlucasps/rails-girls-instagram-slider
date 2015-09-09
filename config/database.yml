@@ -21,5 +21,11 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  host: <%= ENV['SNAP_DB_PG_HOST'] %>
+  port: <%= ENV['SNAP_DB_PG_PORT'] %> 
+  username: <%= ENV['SNAP_DB_PG_USER'] %>
+  password: <%= ENV['SNAP_DB_PG_PASSWORD'] %>
+  database: <%= ENV['POSTGRES_DATABASE'] %>
+  pool: 5
+  timeout: 5000
