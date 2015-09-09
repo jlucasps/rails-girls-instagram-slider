@@ -5,9 +5,14 @@
 $ docker-compose build
 ````
 
+#### Run rubocop
+````
+$ docker-compose run web rubocop
+````
+
 #### Run tests
 ````
-$ docker-compose run web bundle exec rake test
+ $ docker-compose run -e RAILS_ENV=test web rake test
 ````
 
 #### Run rake tasks
