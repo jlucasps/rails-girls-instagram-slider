@@ -23,7 +23,7 @@ test:
 production:
   adapter: postgresql
   host: <%= ENV['SNAP_DB_PG_HOST'] %>
-  port: <%= ENV['SNAP_DB_PG_PORT'] %> 
+  port: <%= ENV['SNAP_DB_PG_PORT'] %>
   username: <%= ENV['SNAP_DB_PG_USER'] %>
   password: <%= ENV['SNAP_DB_PG_PASSWORD'] %>
   database: <%= ENV['POSTGRES_DATABASE'] %>
