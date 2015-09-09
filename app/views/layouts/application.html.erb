@@ -5,13 +5,22 @@
   <link rel="shortcut icon" href="<%= asset_path 'favicon.ico' %>" type="image/x-icon">
   <link rel="icon" href="<%= asset_path 'favicon.ico' %>" type="image/x-icon">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= yield %>
+  <div class='container'>
+    <%= yield %>
+  </div>
+  <script>
+    // [].slice.call( document.querySelectorAll( '.photostack' ) ).forEach( function( el ) { new Photostack( el ); } );
+
+    new Photostack( document.getElementById( 'photostack-1' ), {
+      callback : function( item ) {
+        //console.log(item)
+      }
+    } );
+  </script>
 </body>
 </html>

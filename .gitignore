@@ -19,3 +19,5 @@
 # Vim files
 *.swp
 *.swo
+
+**/.DS_Store
