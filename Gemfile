@@ -31,6 +31,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# The official gem for the Instagram API http://instagram.com/developer/
+gem 'instagram'
+
+# A set of Rails responders to dry up your application http://blog.plataformatec.com.br/
+gem 'responders'
+
 group :production do
   # Postgresql
   gem 'pg'
@@ -49,7 +55,7 @@ group :development, :test do
   gem 'spring'
 
   # A Ruby static code analyzer, based on the community Ruby style guide.
-  gem 'rubocop'
+  gem 'rubocop', '~> 0.34.1'
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
