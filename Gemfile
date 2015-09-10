@@ -59,4 +59,7 @@ group :development, :test do
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+
+  # Mocha is a mocking and stubbing library for Ruby
+  gem 'mocha'
 end
