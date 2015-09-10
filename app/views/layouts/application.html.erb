@@ -10,18 +10,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class='container'>
+  <div class='container' id='container'>
     <%= yield %>
   </div>
   <script>
     // [].slice.call( document.querySelectorAll( '.photostack' ) ).forEach( function( el ) { new Photostack( el ); } );
 
-    var photostack = new Photostack( document.getElementById( 'photostack-1' ), {
-      showNavigation: false,
-      callback : function( item ) {
-        //console.log(item)
-      }
-    } );
+    var photostack = new Photostack( document.getElementById( 'photostack-1' ), { showNavigation: false } );
+
+    var nanobar = new Nanobar({ bg: '#F44336' });
+
   </script>
 </body>
 </html>
