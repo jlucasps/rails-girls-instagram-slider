@@ -16,7 +16,7 @@
   <script>
     // [].slice.call( document.querySelectorAll( '.photostack' ) ).forEach( function( el ) { new Photostack( el ); } );
 
-    new Photostack( document.getElementById( 'photostack-1' ), {
+    var photostack = new Photostack( document.getElementById( 'photostack-1' ), {
       showNavigation: false,
       callback : function( item ) {
         //console.log(item)

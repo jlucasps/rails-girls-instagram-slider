@@ -108,6 +108,7 @@
         ps._open.call(ps, true);
       },
       navigate: function(dir) {
+        ps.items = [].slice.call( ps.inner.querySelectorAll( 'figure:not([data-dummy])' ) );
         ps._navigate.call(ps, dir);
       },
     }
