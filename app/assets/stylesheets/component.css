@@ -17,7 +17,7 @@
 }
 
 .js .photostack {
-	height: 1024px;
+	height: 800px;
 }
 
 .photostack-start {
@@ -34,8 +34,8 @@
 }
 
 .photostack figure {
-	width: 320px;
-	height: 360px;
+	width: 240px;
+	height: 260px;
 	position: relative;
 	display: inline-block;
 	background: #fff;
