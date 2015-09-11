@@ -16,10 +16,37 @@
   <script>
     // [].slice.call( document.querySelectorAll( '.photostack' ) ).forEach( function( el ) { new Photostack( el ); } );
 
-    var photostack = new Photostack( document.getElementById( 'photostack-1' ), { showNavigation: false } );
+    var stack = function () {
+      new Photostack( document.getElementById( 'photostack-1' ), { showNavigation: false } );
+    }
 
     var nanobar = new Nanobar({ bg: '#F44336' });
+    
+    var search = fetchival('/search/');
 
+    var load_pictures = function(){
+      search('railsgirls').get().then(function(response) {
+        var pictures = response.json;
+        for (i in pictures) {
+          $('#photostack-1 div').append(
+            " <figure> " +
+            "   <a href='" + pictures[i].link + "' class='photostack-img'> " +
+            "     <img src='" + pictures[i].url + "' alt='img"+ i +"'/> " +
+            "   </a> " +
+            "   <figcaption> " +
+            "     <h2 class='photostack-title'>" + pictures[i].comment + ", @"+ pictures[i].username + "</h2> " +
+            "   </figcaption> " +
+            " </figure> "
+          )
+        }
+
+        var photostack = stack();
+
+      }); 
+
+    }
+
+    load_pictures();
   </script>
 </body>
 </html>

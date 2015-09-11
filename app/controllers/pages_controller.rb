@@ -7,7 +7,7 @@ class PagesController < ApplicationController
 
   def search
     if params[:hashtag].include? 'railsgirls'
-      @pictures = ( InstagramClient.new ).search(:hashtag)
+      @pictures = ( InstagramClient.new ).search(params[:hashtag])
     else
       @pictures = nil
     end
