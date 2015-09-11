@@ -61,5 +61,5 @@ group :development, :test do
   gem 'sqlite3'
 
   # Mocha is a mocking and stubbing library for Ruby
-  gem 'mocha'
+  gem 'mocha', '~> 1.1.0'
 end

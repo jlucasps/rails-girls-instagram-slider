@@ -186,7 +186,7 @@ DEPENDENCIES
   instagram
   jbuilder (~> 2.0)
   jquery-rails
-  mocha
+  mocha (~> 1.1.0)
   pg
   rails (= 4.2.0)
   rails_12factor

@@ -14,38 +14,44 @@
     <%= yield %>
   </div>
   <script>
-    // [].slice.call( document.querySelectorAll( '.photostack' ) ).forEach( function( el ) { new Photostack( el ); } );
-
-    var stack = function () {
-      new Photostack( document.getElementById( 'photostack-1' ), { showNavigation: false } );
-    }
-
-    var nanobar = new Nanobar({ bg: '#F44336' });
-
-    var search = fetchival('/search/');
-
-    var load_pictures = function(){
-      search("<%= params[:hashtag] || 'railsgirls' %>").get().then(function(response) {
-        var pictures = response.json;
-        for (i in pictures) {
-          $('#photostack-1 div').append(
-            " <figure> " +
-            "   <a href='" + pictures[i].link + "' class='photostack-img'> " +
-            "     <img src='" + pictures[i].url + "' alt='img"+ i +"'/> " +
-            "   </a> " +
-            "   <figcaption> " +
-            "     <h2 class='photostack-title'>" + (pictures[i].comment ? pictures[i].comment + ", @" : "@") +
-            pictures[i].username + "</h2> " +
-            "   </figcaption> " +
-            " </figure> "
-          )
+    //  new Photostack( document.getElementById( 'photostack-1' ), { showNavigation: false } );
+    var photostack,
+        nanobar = new Nanobar({ bg: '#F44336' }),
+        nano_counter = 0,
+        search = fetchival('/search/'),
+        load_pictures = function() {
+          search("<%= params[:hashtag] || 'railsgirls' %>").get().then(function(response) {
+            var pictures = response.json;
+            $('#photostack-1 div').html('');
+            for (i in pictures) {
+              $('#photostack-1 div').append(
+                " <figure> " +
+                "   <a href='" + pictures[i].link + "' class='photostack-img'> " +
+                "     <img src='" + pictures[i].url + "' alt='img"+ i +"'/> " +
+                "   </a> " +
+                "   <figcaption> " +
+                "     <h2 class='photostack-title'>" + (pictures[i].comment ? pictures[i].comment + ", @" : "@") + pictures[i].username + "</h2> " +
+                "   </figcaption> " +
+                " </figure> "
+              )
+            }
+            photostack = new Photostack( document.getElementById( 'photostack-1' ), { showNavigation: false } );
+          });
         }
 
-        var photostack = stack();
+    setInterval(function(){
+      nano_counter = 0;
+      load_pictures();
+    }, 100 * 1000); // Reload pictures at every 100 seconds
 
-      });
+    setInterval(function(){
+      nano_counter += 1;
+      nanobar.go(nano_counter); // Increment loading bar at every second
+    }, 1000);
 
-    }
+    setInterval(function(){
+      photostack.navigate('next');
+    }, 5 * 1000);
 
     load_pictures();
   </script>
