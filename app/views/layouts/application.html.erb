@@ -23,6 +23,15 @@
           search("<%= params[:hashtag] || 'railsgirls' %>").get().then(function(response) {
             var pictures = response.json;
             $('#photostack-1 div').html('');
+            if (pictures.length == 0) {
+              pictures.push({
+                comment: "Utilize a hashtag #<%= params[:hashtag] || 'railsgirls' %>",
+                link: "<%= image_path 'railsgirls.png' %>",
+                url: "",
+                username: "RailsGirls",
+              })
+            }
+
             for (i in pictures) {
               $('#photostack-1 div').append(
                 " <figure> " +
@@ -50,7 +59,12 @@
     }, 1000);
 
     setInterval(function(){
-      photostack.navigate('next');
+      if (photostack) {
+        photostack.navigate('next');
+      } else {
+        $('#photostack-1 div').append('Coloque uma foto com a hashtag #<%=params[:hashtag]%>');
+      }
+
     }, 5 * 1000);
 
     load_pictures();
