@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> <%= params[:hashtag] || '#railsgirls' %> on Instagram</title>
+  <title> #<%= params[:hashtag] || 'railsgirls' %> on Instagram</title>
   <link rel="shortcut icon" href="<%= asset_path 'favicon.ico' %>" type="image/x-icon">
   <link rel="icon" href="<%= asset_path 'favicon.ico' %>" type="image/x-icon">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
