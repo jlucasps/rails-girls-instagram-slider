@@ -1,13 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rails Girls - Instagram</title>
+  <title> <%= params[:hashtag] || '#railsgirls' %> on Instagram</title>
   <link rel="shortcut icon" href="<%= asset_path 'favicon.ico' %>" type="image/x-icon">
   <link rel="icon" href="<%= asset_path 'favicon.ico' %>" type="image/x-icon">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!-- Place this data between the <head> tags of your website -->
+  <meta name="description" content="Post photos on Instagram, see here." />
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@railsgirls">
+  <meta name="twitter:title" content="Rails Girls">
+  <meta name="twitter:description" content="Rails Girls aims to give tools for girls and women to build their ideas. Get excited and make things!">
+  <meta name="twitter:creator" content="@railsgirls">
+  <meta name="twitter:image" content="http://railsgirls.com/images/railsgirls-sq.png">
+
+  <!-- Open Graph data -->
+  <meta property="og:title" content="Rails Girls" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="http://rails-girls-instagram.herokuapp.com" />
+  <meta property="og:image" content="http://railsgirls.com/images/railsgirls-sq.png" />
+  <meta property="og:description" content="Rails Girls aims to give tools for girls and women to build their ideas. Get excited and make things!" />
+  <meta property="og:site_name" content="Rails Girls on Instagram" />
 </head>
 <body>
   <div class='container' id='container'>
