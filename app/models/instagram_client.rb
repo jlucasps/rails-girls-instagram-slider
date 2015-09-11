@@ -9,15 +9,14 @@ class InstagramClient
     end
   end
 
-  def search(hashtag) # rubocop:disable Metrics/AbcSize
+  def search(hashtag)
     medias = Instagram.client.tag_recent_media(hashtag, count: COUNT)
     medias.map do |media|
-      comment = (media.comments.data.any? ? media.comments.data[0].text : '')
       {
         link: media.link,
         url: media.images.low_resolution.url,
         username: media.user.username,
-        comment: comment
+        comment: media.caption.text
       }
     end
   end
