@@ -51,21 +51,16 @@
     setInterval(function(){
       nano_counter = 0;
       load_pictures();
-    }, 100 * 1000); // Reload pictures at every 100 seconds
+    }, 100 * 1000); // Reload pictures every 100 seconds
 
     setInterval(function(){
       nano_counter += 1;
-      nanobar.go(nano_counter); // Increment loading bar at every second
-    }, 1000);
+      nanobar.go(nano_counter);
+    }, 1000); // Increment loading bar every 1 second
 
     setInterval(function(){
-      if (photostack) {
-        photostack.navigate('next');
-      } else {
-        $('#photostack-1 div').append('Coloque uma foto com a hashtag #<%=params[:hashtag]%>');
-      }
-
-    }, 5 * 1000);
+      photostack.navigate('next');
+    }, 10 * 1000); // Suffle pictures every 10 seconds
 
     load_pictures();
   </script>

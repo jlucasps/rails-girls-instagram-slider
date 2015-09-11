@@ -34,6 +34,7 @@
 }
 
 .photostack figure {
+	overflow: hidden;
 	width: 240px;
 	height: 260px;
 	position: relative;
