@@ -15,7 +15,7 @@ class InstagramClient
       comment = (media.comments.data.any? ? media.comments.data[0].text : '')
       {
         link: media.link,
-        url: media.images.standard_resolution.url,
+        url: media.images.low_resolution.url,
         username: media.user.username,
         comment: comment
       }
