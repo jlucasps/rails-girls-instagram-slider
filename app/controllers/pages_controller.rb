@@ -3,6 +3,11 @@ class PagesController < ApplicationController
   respond_to :html, only: :index
 
   def index
+    if params[:hashtag].nil? || !params[:hashtag].include?('railsgirls')
+      @pictures = InstagramClient.new.search('railsgirls')
+    else
+      @pictures = InstagramClient.new.search(params[:hashtag])
+    end
   end
 
   def search
