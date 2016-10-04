@@ -11,5 +11,5 @@ test:
   <<: *default
 
 production:
-  redirect_endpoint: 'https://rails-girls-instagram.herokuapp.com/'
+  redirect_endpoint: 'http://rails-girls-instagram.herokuapp.com'
   port: 80
