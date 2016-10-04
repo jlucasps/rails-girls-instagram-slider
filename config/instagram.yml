@@ -1,0 +1,15 @@
+
+default: &default
+  redirect_endpoint: 'http://localhost'
+  redirect_port: 3000
+  redirect_path: 'redirect_instagram'
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  redirect_endpoint: 'https://rails-girls-instagram.herokuapp.com/'
+  port: 80

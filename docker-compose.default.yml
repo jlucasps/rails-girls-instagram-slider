@@ -5,4 +5,7 @@ web:
     - .:/app
   ports:
     - "3000:3000"
+  environment:
+    INSTAGRAM_CLIENT_ID: your-client-id-here
+    INSTAGRAM_CLIENT_SECRET: your-client-secret-here
   dns: 8.8.8.8

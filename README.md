@@ -23,6 +23,11 @@ $ docker-compose run web rubocop
 $ docker-compose run web rake db:create
 ````
 
+#### Get valid crednetials on Instagram and place on docker-compose.yrml
+````
+$ cp docker-compose.default.yml docker-compose.yml
+````
+
 #### Boot the app
 ````
 $ docker-compose up
