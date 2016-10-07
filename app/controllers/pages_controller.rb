@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   respond_to :html, only: :index
 
   def index
+    session[:access_token] = ENV['INSTAGRAM_ACCESS_TOKEN']
   end
 
   def search
@@ -11,11 +12,9 @@ class PagesController < ApplicationController
   end
 
   private
-    def set_pictures
-      if params[:hashtag] and params[:hashtag].include? 'railsgirls'
-        @pictures = InstagramClient.new().search(params[:hashtag])
-      else
-        @pictures = nil
-      end
-    end
+
+  def set_pictures
+    return unless !params[:hashtag].nil? && params[:hashtag].include?('railsgirls')
+    @pictures = InstagramClient.new(session[:access_token]).search(params[:hashtag])
+  end
 end

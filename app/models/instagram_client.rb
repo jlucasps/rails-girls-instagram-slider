@@ -2,8 +2,8 @@ class InstagramClient
   attr_reader :access_token
   COUNT = 15
 
-  def initialize(access_token = '')
-    @access_token = access_token ||= ENV['INSTAGRAM_ACCESS_TOKEN']
+  def initialize(access_token)
+    @access_token = access_token
   end
 
   def search(hashtag)
