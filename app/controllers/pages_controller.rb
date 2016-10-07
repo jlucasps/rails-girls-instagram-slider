@@ -12,7 +12,7 @@ class PagesController < ApplicationController
 
   private
     def set_pictures
-      if params[:hashtag].include? 'railsgirls'
+      if params[:hashtag] and params[:hashtag].include? 'railsgirls'
         @pictures = InstagramClient.new().search(params[:hashtag])
       else
         @pictures = nil

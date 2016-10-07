@@ -33,9 +33,4 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert !assigns(:pictures)
   end
-
-  test 'login redirects to instagram auth page' do
-    get '/login'
-    assert_equal 302, status
-  end
 end
