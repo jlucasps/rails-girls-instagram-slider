@@ -31,56 +31,5 @@
   <div class='container' id='container'>
     <%= yield %>
   </div>
-  <script>
-    //  new Photostack( document.getElementById( 'photostack-1' ), { showNavigation: false } );
-    var photostack,
-        nanobar = new Nanobar({ bg: '#F44336' }),
-        nano_counter = 0,
-        search = fetchival('/search/'),
-        load_pictures = function() {
-          search("<%= params[:hashtag] || 'railsgirls' %>").get().then(function(response) {
-            var pictures = response.json;
-            $('#photostack-1 div').html('');
-            if (pictures.length == 0) {
-              pictures.push({
-                comment: "Utilize a hashtag #<%= params[:hashtag] || 'railsgirls' %>",
-                link: "<%= image_path 'railsgirls.png' %>",
-                url: "",
-                username: "RailsGirls",
-              })
-            }
-
-            for (i in pictures) {
-              $('#photostack-1 div').append(
-                " <figure> " +
-                "   <a href='" + pictures[i].link + "' class='photostack-img'> " +
-                "     <img src='" + pictures[i].url + "' alt='img"+ i +"'/> " +
-                "   </a> " +
-                "   <figcaption> " +
-                "     <h2 class='photostack-title'>" + (pictures[i].comment ? pictures[i].comment + ", @" : "@") + pictures[i].username + "</h2> " +
-                "   </figcaption> " +
-                " </figure> "
-              )
-            }
-            photostack = new Photostack( document.getElementById( 'photostack-1' ), { showNavigation: false } );
-          });
-        }
-
-    setInterval(function(){
-      nano_counter = 0;
-      load_pictures();
-    }, 100 * 1000); // Reload pictures every 100 seconds
-
-    setInterval(function(){
-      nano_counter += 1;
-      nanobar.go(nano_counter);
-    }, 1000); // Increment loading bar every 1 second
-
-    setInterval(function(){
-      photostack.navigate('next');
-    }, 10 * 1000); // Suffle pictures every 10 seconds
-
-    load_pictures();
-  </script>
 </body>
 </html>

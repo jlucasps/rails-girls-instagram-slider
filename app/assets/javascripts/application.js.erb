@@ -1,0 +1,77 @@
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file.
+//
+// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
+// about supported directives.
+//
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
+//= require_tree .
+
+$(document).ready(function() {
+    //  new Photostack( document.getElementById( 'photostack-1' ), { showNavigation: false } );
+    var photostack,
+        nanobar = new Nanobar({ bg: '#F44336' }),
+        nano_counter = 0,
+        hashtag = $('#hashtag').val() || 'railsgirls',
+        pictures = [];
+    
+    function load_pictures() {
+      $.ajax({
+          dataType: 'json',
+          method: 'GET',
+          url: '/search/' + hashtag,
+          success: function(response) { 
+            pictures = response.json || [];
+          },
+          complete: function() {
+            if (!pictures.length) {
+              pictures.push({
+                comment: "Utilize a hashtag #railsgirls",
+                link: "<%= image_path 'railsgirls.png' %>",
+                url: "",
+                username: "RailsGirls",
+              })
+            }
+
+            $('#photostack-1 div').empty();
+            for (i in pictures) {
+              $('#photostack-1 div').append(
+                " <figure> " +
+                "   <a href='" + pictures[i].link + "' class='photostack-img'> " +
+                "     <img src='" + pictures[i].url + "' alt='img"+ i +"'/> " +
+                "   </a> " +
+                "   <figcaption> " +
+                "     <h2 class='photostack-title'>" + (pictures[i].comment ? pictures[i].comment + ", @" : "@") + pictures[i].username + "</h2> " +
+                "   </figcaption> " +
+                " </figure> "
+              )
+            }
+            photostack = new Photostack( document.getElementById( 'photostack-1' ), { showNavigation: false } );
+          }
+      });
+    }
+
+    setInterval(function(){
+      nano_counter = 0;
+      load_pictures();
+    }, 100 * 1000); // Reload pictures every 100 seconds
+
+    setInterval(function(){
+      nano_counter += 1;
+      nanobar.go(nano_counter);
+    }, 1000); // Increment loading bar every 1 second
+
+    setInterval(function(){
+      photostack.navigate('next');
+    }, 10 * 1000); // Suffle pictures every 10 seconds
+
+    load_pictures();
+});
