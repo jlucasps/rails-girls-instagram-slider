@@ -13,7 +13,7 @@ class PagesController < ApplicationController
   private
 
   def set_pictures
-    return unless !params[:hashtag].nil? && params[:hashtag].include?('railsgirls')
+    return unless !params[:hashtag].nil? && ((params[:hashtag].include?('railsgirls') || params[:hashtag].include?('blackgirlscode'))) # rubocop:disable LineLength
     @pictures = InstagramClient.new(ENV['INSTAGRAM_ACCESS_TOKEN']).search(params[:hashtag])
   end
 end

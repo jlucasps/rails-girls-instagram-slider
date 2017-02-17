@@ -22,8 +22,14 @@ class PagesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'search for a valid tag' do
+  test 'search for a valid tag railsgirlsbh' do
     get :search, hashtag: 'railsgirlsbh', format: 'json'
+    assert_response :success
+    assert assigns(:pictures)
+  end
+
+  test 'search for a valid tag blackgirlscode' do
+    get :search, hashtag: 'blackgirlscode', format: 'json'
     assert_response :success
     assert assigns(:pictures)
   end
