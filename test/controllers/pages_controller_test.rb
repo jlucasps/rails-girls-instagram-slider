@@ -28,8 +28,8 @@ class PagesControllerTest < ActionController::TestCase
     assert assigns(:pictures)
   end
 
-  test 'search for a valid tag blackgirlscode' do
-    get :search, hashtag: 'blackgirlscode', format: 'json'
+  test 'search for a valid tag BGC_JHB' do
+    get :search, hashtag: 'BGC_JHB', format: 'json'
     assert_response :success
     assert assigns(:pictures)
   end
