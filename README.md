@@ -2,6 +2,8 @@
 
 [![Build Status](https://snap-ci.com/jlucasps/rails-girls-instagram-slider/branch/master/build_image)](https://snap-ci.com/jlucasps/rails-girls-instagram-slider/branch/master)
 
+### Important:
+[Deployment pipeline](https://app.snap-ci.com/jlucasps/rails-girls-instagram-slider/branch/master) will be unavailable after [snap-ci shutdown](https://blog.snap-ci.com/blog/2017/02/06/2017-02-06-snap-announcement/).
 
 #### Build docker image
 ````
